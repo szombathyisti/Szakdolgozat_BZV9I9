@@ -6,3 +6,5 @@ Szakdolgozatom az adatvizualizáció helyes kivitelezésének fontosságát és 
 **Szakdolgozat írója:** Szombathy István  
 **Témavezető:** Bodroginé Dr. Zichar Marianna  
 **Egyetem, kar, szak:** Debreceni Egyetem, Informatika Kar, Gazdaságinformatikus szak
+
+**Minden jog fenntartva**
