@@ -3,11 +3,11 @@ import pandas as pd
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-# 🎨 Saját színek
+
 feladat_színek = ["#012D58", "#0056ad", "#2fccf4", "#4f5df6", "#89b5f8"]
 backend_frontend_színek = ["#003366", "#3385ff"]
 
-# Adatok
+
 data = {
     "Feladat": [
         "Elfelejtett jelszó funkció",
@@ -22,7 +22,7 @@ data = {
 df = pd.DataFrame(data)
 df["Összes"] = df["Backend"] + df["Frontend"]
 
-# Összesített értékek a 2. diagramhoz
+
 összes_backend = df["Backend"].sum()
 összes_frontend = df["Frontend"].sum()
 df2 = pd.DataFrame({
@@ -30,7 +30,7 @@ df2 = pd.DataFrame({
     "Összesített órák": [összes_backend, összes_frontend]
 })
 
-# Két kördiagram egy vásznon
+
 fig = make_subplots(
     rows=1, cols=2,
     specs=[[{'type':'domain'}, {'type':'domain'}]],
@@ -40,7 +40,7 @@ fig = make_subplots(
     ]
 )
 
-# Bal oldali diagram – feladatonként
+
 fig.add_trace(
     go.Pie(
         labels=df["Feladat"],
@@ -54,7 +54,7 @@ fig.add_trace(
     row=1, col=1
 )
 
-# Jobb oldali diagram – backend vs frontend
+
 fig.add_trace(
     go.Pie(
         labels=df2["Típus"],
@@ -68,16 +68,16 @@ fig.add_trace(
     row=1, col=2
 )
 
-# Közös elrendezés – visszaállított alapbeállítás
+
 fig.update_layout(
     title_text="Projekt erőforrás-megoszlás",
     title_x=0.5,
     title_font_size=40,
     margin=dict(l=20, r=20, t=150, b=20),
-    annotations=[dict(font_size=34)]  # subplot-címek maradnak az alap pozícióban
+    annotations=[dict(font_size=34)]  
 )
 
-# Mentés egyetlen képként
+
 fig.write_image("diagramok_egyben.png", width=1600, height=900, scale=1.5)
 
-fig.show()
+
