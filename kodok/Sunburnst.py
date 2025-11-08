@@ -1,26 +1,35 @@
 import plotly.express as px
-
+import random
 
 df = px.data.iris()
+
+# Véletlenszerű, sokszínű színsorozat létrehozása
+random_colors = [
+    f"rgb({random.randint(0,255)}, {random.randint(0,255)}, {random.randint(0,255)})"
+    for _ in range(len(df))
+]
 
 # Sunburst diagram – hierarchia: faj -> petal_width kategória
 fig = px.sunburst(
     df,
-    path=["species", "petal_width"],  
-    title="Iris adathalmaz hierarchikus eloszlása ",
-    color="species",
-    color_discrete_sequence=["#B0C4DE", "#6495ED", "#1E3A8A"]
+    path=["species", "petal_width"],
+    color="petal_width",
+    color_continuous_scale=random_colors
 )
-
 
 fig.update_layout(
     template="simple_white",
-    font=dict(family="Arial", size=14, color="black"),
-    title_font=dict(size=20, family="Arial", color="black"),
-    width=800,
-    height=600,
-    margin=dict(t=60, l=60, r=30, b=60)
+    font=dict(family="Arial", size=26, color="black"),  
+    title=dict(
+        text="Iris adathalmaz hierarchikus eloszlása ",
+        font=dict(size=50, family="Arial", color="black"),
+        x=0.5,
+        xanchor='center'
+    ),
+    width=1400,
+    height=1000,
+    margin=dict(t=100, l=20, r=20, b=20)  
 )
 
-fig.show()  # A kódot lefuttatva az alapértelmezett böngészőben megkapjuk az interaktív diagrammot
-fig.write_image("Sunburst.png", scale=3)
+fig.show()
+fig.write_image("Sunburst_sokszin_nagy.png", scale=6)
