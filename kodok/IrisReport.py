@@ -121,7 +121,7 @@ Ahol a vonalak csoportosulnak, ott a fajok jellemzően hasonló értékeket muta
 míg a csészelevélnél összefonódnak. Ez újra a tézist erősíti: a sziromadatok különítik el a fajokat.</p>
 """
 
-# === Logisztikus regresszió ===
+#Logisztikus regresszió 
 X_petal = df[['petal_length','petal_width']].values
 X_sepal = df[['sepal_length','sepal_width']].values
 X_all = df[['sepal_length','sepal_width','petal_length','petal_width']].values
@@ -134,7 +134,7 @@ acc_petal = cross_val_score(clf, X_petal, y, cv=cv).mean()
 acc_sepal = cross_val_score(clf, X_sepal, y, cv=cv).mean()
 acc_all = cross_val_score(clf, X_all, y, cv=cv).mean()
 
-# === Konklúzió ===
+#Konklúzió 
 conclusion = f"""
 <h2>Konklúzió</h2>
 <p>A numerikus elemzés 5-szörös keresztvalidációval:</p>
@@ -149,7 +149,7 @@ mint a csészelevél adatok. Ezzel nemcsak vizuálisan, hanem statisztikailag is
 Ezek a változók hordozzák a biológiai különbségek legnagyobb részét, míg a csészelevél méretei inkább fajon belüli variabilitást tükröznek.</p>
 """
 
-# === HTML jelentés ===
+#HTML  
 sections = [
     "<h1>Iris – Részletes Plotly alapú elemzés</h1>",
     f"<h2>Tézis</h2><p>{thesis}</p>",
@@ -165,10 +165,9 @@ sections = [
 
 report_html = "<html><head><meta charset='utf-8'></head><body style='font-family:sans-serif; max-width: 900px; margin: auto;'>" + "\n".join(sections) + "</body></html>"
 
-# === Mentés ===
 out_path = "iris_plotly_analysis_detailed.html"
 with open(out_path, 'w', encoding='utf-8') as f:
     f.write(report_html)
 
-print("Részletes jelentés elkészült:", out_path)
 print("Tézis megerősítve – a sziromadatok lényegesen informatívabbak, mint a csészelevél adatok.")
+
