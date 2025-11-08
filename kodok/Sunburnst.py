@@ -24,5 +24,3 @@ fig.update_layout(
 
 fig.show()  # A kódot lefuttatva az alapértelmezett böngészőben megkapjuk az interaktív diagrammot
 fig.write_image("Sunburst.png", scale=3)
-
-
